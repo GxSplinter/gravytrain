@@ -26,3 +26,15 @@ end
 Then(/^I see a confirmation message$/) do
   expect(page).to have_content('Done!')
 end
+
+Given(/^I do not accept the Terms and Conditions$/) do
+  uncheck 'Accepted terms'
+end
+
+Then(/^my account is not created$/) do
+  expect(Provider.count).to eq (0)
+end
+
+Then(/^I am notified that I need to accept the Terms and Conditions$/) do
+  expect(page).to have_content('Accepted terms must be accepted')
+end
