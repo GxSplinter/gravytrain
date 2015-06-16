@@ -38,3 +38,22 @@ end
 Then(/^I am notified that I need to accept the Terms and Conditions$/) do
   expect(page).to have_content('Accepted terms must be accepted')
 end
+
+Given(/^my profile exists$/) do
+  @provider = Provider.create!(
+    name: 'Bill Jackson', address: '123 fake st.', postcode: 'MK44 3NU',
+    about_me: 'I am a dill', paypal_email: 'bill@dill.com', accepted_terms: true
+    )
+end
+
+When(/^I view my profile$/) do
+  visit provider_path(@provider)
+end
+
+Then(/^my details are displayed$/) do
+  expect(page).to have_content('Name: Bill Jackson')
+  expect(page).to have_content('Address: 123 fake st.')
+  expect(page).to have_content('Postcode: MK44 3NU')
+  expect(page).to have_content('About me: I am a dill')
+  expect(page).to have_content('Paypal Email: bill@dill.com')
+end
