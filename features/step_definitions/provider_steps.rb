@@ -24,7 +24,7 @@ Then(/^my Provider account is created$/) do
 end
 
 Then(/^I see a confirmation message$/) do
-  expect(page).to have_content('Done!')
+  expect(page).to have_content('Your profile has been created')
 end
 
 Given(/^I do not accept the Terms and Conditions$/) do
