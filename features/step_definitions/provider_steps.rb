@@ -51,9 +51,5 @@ When(/^I view my profile$/) do
 end
 
 Then(/^my details are displayed$/) do
-  expect(page).to have_content('Name: Bill Jackson')
-  expect(page).to have_content('Address: 123 fake st.')
-  expect(page).to have_content('Postcode: MK44 3NU')
-  expect(page).to have_content('About me: I am a dill')
-  expect(page).to have_content('Paypal Email: bill@dill.com')
+  expect(page).to have_content(@provider.name)
 end
